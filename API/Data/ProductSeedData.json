@@ -1,0 +1,57 @@
+[
+    {
+      "Name": "Quarex",
+      "Description": "Consectetur esse ut veniam ad laboris reprehenderit reprehenderit eu labore officia qui.",
+      "Price": 10.6575,
+      "ProductPhotos": [
+        {
+          "Url": "https://randomuser.me/api/portraits/women/18.jpg",
+          "IsMain": true
+        }
+      ]
+    },
+    {
+      "Name": "Bittor",
+      "Description": "Exercitation ad sit ea pariatur veniam proident cillum fugiat reprehenderit non reprehenderit.",
+      "Price": 1.3846,
+      "ProductPhotos": [
+        {
+          "Url": "https://randomuser.me/api/portraits/women/21.jpg",
+          "IsMain": true
+        }
+      ]
+    },
+    {
+      "Name": "Enquility",
+      "Description": "Quis excepteur eu labore aliquip nisi magna fugiat consectetur ut aliqua elit eiusmod.",
+      "Price": 12.9046,
+      "ProductPhotos": [
+        {
+          "Url": "https://randomuser.me/api/portraits/women/14.jpg",
+          "IsMain": true
+        }
+      ]
+    },
+    {
+      "Name": "Pawnagra",
+      "Description": "Velit esse ut mollit aute aliquip.",
+      "Price": 3.4366,
+      "ProductPhotos": [
+        {
+          "Url": "https://randomuser.me/api/portraits/women/18.jpg",
+          "IsMain": true
+        }
+      ]
+    },
+    {
+      "Name": "Retrack",
+      "Description": "Aute excepteur veniam laborum sunt nisi labore qui do cillum ea sit.",
+      "Price": 8.1993,
+      "ProductPhotos": [
+        {
+          "Url": "https://randomuser.me/api/portraits/women/29.jpg",
+          "IsMain": true
+        }
+      ]
+    }
+  ]
