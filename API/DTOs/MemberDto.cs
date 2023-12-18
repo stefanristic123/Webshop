@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using API.Entities;
 
 namespace API.DTOs
 {
@@ -22,5 +23,6 @@ namespace API.DTOs
         public string City { get; set; }
         public string Country { get; set; }     
         public List<PhotoDto> Photos { get; set; }
+        public CartDto Cart { get; set; }
     }
 }

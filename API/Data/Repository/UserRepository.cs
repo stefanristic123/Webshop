@@ -25,13 +25,21 @@ namespace API.Data
         {
             return await _context.Users
                 .Include(p => p.Photos)
+                .Include(p => p.Cart)
+                    .ThenInclude(i => i.Items)
+                    .ThenInclude(i => i.Product)
+                    .ThenInclude(p => p.ProductPhotos)
                 .ToListAsync();
         }
 
         public async Task<AppUser> GetUserByIdAsync(int id)
         {
             return await _context.Users
-                .Include(p => p.Photos) 
+                .Include(p => p.Photos)
+                .Include(p => p.Cart) 
+                    .ThenInclude(i => i.Items)
+                    .ThenInclude(i => i.Product)
+                    .ThenInclude(p => p.ProductPhotos)
                 .SingleOrDefaultAsync(x => x.Id == id);
         }
   

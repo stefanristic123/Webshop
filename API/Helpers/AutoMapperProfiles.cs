@@ -22,7 +22,11 @@ namespace API.Helpers
                 .ForMember(dest => dest.ProductPhotoUrl, opt =>
                     opt.MapFrom(src => src.ProductPhotos.FirstOrDefault(x => x.IsMain).Url));
             CreateMap<ProductPhoto, PhotoDto>();
-
+            CreateMap<Cart, CartDto>();
+            CreateMap<CartItem, CartItemDto>()
+                .ForMember(dest => dest.ProductName, opt => opt.MapFrom(src => src.Product.Name))
+                .ForMember(dest => dest.ProductPrice, opt => opt.MapFrom(src => src.Product.Price))
+                .ForMember(dest => dest.ProductPhotoUrl, opt => opt.MapFrom(src => src.Product.ProductPhotos.FirstOrDefault(p => p.IsMain).Url));
         }
         
     }
