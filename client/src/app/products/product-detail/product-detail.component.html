@@ -1,24 +1,24 @@
-<div class="row" *ngIf="member">
+<div class="row" *ngIf="product">
     <div class="col-4">
         <div class="card">
-            <img src="{{member.photoUrl || './assets/user.png'}}" alt="{{member.knownAs}}"
+            <img src="{{product.productPhotoUrl || './assets/user.png'}}" 
                 class="card-img-top img-thumbnail">
             <div class="card-body">
-                <div>
+                <!-- <div>
                     <strong>Location:</strong>
-                    <p>{{member.city}}, {{member.country}}</p>
-                </div>
+                    <p>{{product.city}}, {{product.country}}</p>
+                </div> -->
                 <div>
-                    <strong>Age:</strong>
-                    <p>{{member.age}}</p>
+                    <strong>Name:</strong>
+                    <p>{{product.name}}</p>
                 </div>
-                <div>
+                <!-- <div>
                     <strong>Last active:</strong>
-                    <p>{{member.lastActive}}</p>
-                </div>
+                    <p>{{product.lastActive}}</p>
+                </div> -->
                 <div>
-                    <strong>Member since:</strong>
-                    <p>{{member.created}}</p>
+                    <strong>product price:</strong>
+                    <p>{{product.price}}</p>
                 </div>
             </div>
             <div class="card-footer">
@@ -30,19 +30,15 @@
         </div>
     </div>
     <div class="col-8">
-        <tabset class="member-tabset">
-            <tab heading="About {{member.knownAs}}">
+        <tabset class="product-tabset">
+            <tab heading="About {{product.name }}">
                 <h4>Description</h4>
-                <p>{{member.introduction}}</p>
-                <h4>Looking for</h4>
-                <p>{{member.lookingFor}}</p>
-            </tab>
-            <tab heading="Interests">
-                <h4>Interests</h4>
-                <p>{{member.interests}}</p>
+                <p>{{product.description}}</p>
+                <h4>Price</h4>
+                <p>{{product.price}}</p>
             </tab>
             <tab heading="Photos" #photoTab="tab">
-                <div *ngFor="let photo of member.photos" >
+                <div *ngFor="let photo of product.productPhotos" >
                     <img src="{{photo.url}}" alt="" class="card-img-top img-thumbnail">
                 </div>
             </tab>

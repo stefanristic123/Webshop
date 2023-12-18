@@ -16,6 +16,9 @@ import { ListsComponent } from './lists/lists.component';
 import { SharedModule } from './_modules/shared.module';
 import { TestErrorsComponent } from './errors/test-errors/test-errors.component';
 import { ErrorInterceptor } from './_interceptors/error.interceptor';
+import { JwtInterceptor } from './_interceptors/jwt.interceptor';
+import { ProductListComponent } from './products/product-list/product-list.component';
+import { ProductDetailComponent } from './products/product-detail/product-detail.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +27,9 @@ import { ErrorInterceptor } from './_interceptors/error.interceptor';
     HomeComponent,
     RegisterComponent,
     MemberListComponent,
-    MemberDetailComponent,
+    // MemberDetailComponent,
+    ProductListComponent,
+    // ProductDetailComponent,
     ListsComponent,
     TestErrorsComponent
   ],
@@ -38,7 +43,8 @@ import { ErrorInterceptor } from './_interceptors/error.interceptor';
     SharedModule
   ],
   providers: [
-    {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true}
+    {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true},
+    {provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true},
   ],
   bootstrap: [AppComponent]
 })

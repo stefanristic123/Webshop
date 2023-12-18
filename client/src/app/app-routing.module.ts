@@ -6,6 +6,8 @@ import { MemberDetailComponent } from './members/member-detail/member-detail.com
 import { ListsComponent } from './lists/lists.component';
 import { authGuard } from './_guards/auth.guard';
 import { TestErrorsComponent } from './errors/test-errors/test-errors.component';
+import { ProductListComponent } from './products/product-list/product-list.component';
+import { ProductDetailComponent } from './products/product-detail/product-detail.component';
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
@@ -14,8 +16,10 @@ const routes: Routes = [
     runGuardsAndResolvers: 'always',
     canActivate: [authGuard],
     children: [
+      {path: 'products', component: ProductListComponent},
+      {path: 'products/:name', component: ProductDetailComponent},
       {path: 'members', component: MemberListComponent},
-      {path: 'members/:id', component: MemberDetailComponent},
+      {path: 'members/:username', component: MemberDetailComponent},
       {path: 'lists', component: ListsComponent},
     ]
   },

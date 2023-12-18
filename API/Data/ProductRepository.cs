@@ -18,13 +18,6 @@ namespace API.Data
             _context = context;
             _mapper = mapper;
         }
-        public async Task<Product> GetProductByNameAsync(string name)
-        {
-            var lowerCaseName = name.ToLower();
-            return await _context.Products
-                .Include(p => p.ProductPhotos) 
-                .SingleOrDefaultAsync(x => x.Name == lowerCaseName);
-        }
 
         public async Task<IEnumerable<Product>> GetProductsAsync()
         {
@@ -33,9 +26,19 @@ namespace API.Data
                 .ToListAsync(); 
         }
 
+        public async Task<Product> GetProductByNameAsync(string name)
+        {
+            var lowerCaseName = name.ToLower();
+            return await _context.Products
+                .Include(p => p.ProductPhotos) 
+                .SingleOrDefaultAsync(x => x.Name == lowerCaseName);
+        }
+
         public async Task<Product> GetProductByIdAsync(int id)
         {
-            return await _context.Products.FindAsync(id);
+            return await _context.Products
+                .Include(p => p.ProductPhotos) 
+                .SingleOrDefaultAsync(x => x.Id == id);
         }
 
         public async Task<bool> SaveAllAsync()

@@ -33,9 +33,10 @@ namespace API.Controllers
         }
         
 
-        // [HttpGet("{id}")]
-        // public async Task<ActionResult<AppUser>> GetUserId(int id){
-        //     return await _userRepository.GetUserByIdAsync(id);
-        // }
+        [HttpGet("{id:int}")]
+        public async Task<ActionResult<ProductDto>> GetUserId(int id){
+            var product = await _productRepository.GetProductByIdAsync(id);
+            return _mapper.Map<ProductDto>(product);
+        }
     }
 }
