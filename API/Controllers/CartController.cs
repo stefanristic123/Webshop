@@ -25,5 +25,23 @@ namespace API.Controllers
             var cart = await _cartRepository.GetCartByUserIdAsync(userId);
             return _mapper.Map<CartDto>(cart);
         }
+
+        [HttpPost("add-item")]
+        public async Task<ActionResult> AddItemToCart(int userId, int productId){
+            if (!await _cartRepository.AddItemToCart(userId, productId)){
+                return BadRequest("Failed to add item to cart");
+            }
+
+            return Ok();
+        }
+
+        [HttpDelete("remove-item/{cartItemId}")]
+        public async Task<ActionResult> RemoveItemFromCart(int userId, int cartItemId){
+            if (!await _cartRepository.RemoveItemFromCart(userId, cartItemId)){
+                return BadRequest("Failed to remove item from cart");
+            }
+
+            return Ok();
+        }
     }
 }

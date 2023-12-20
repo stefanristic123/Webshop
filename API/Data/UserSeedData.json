@@ -29,7 +29,41 @@
                     "ProductId": 3
                 } 
             ]
-        }
+        },
+        "Orders": [
+            {
+                "OrderDate": "2023-01-01T00:00:00",
+                "Status": "Finished",
+                "TotalPrice": 100.00,
+                "Address": "123 Main St",
+                "Items": [
+                    {
+                        "ProductId": 1,
+                        "Price": 50.00
+                    },
+                    {
+                        "ProductId": 2,
+                        "Price": 50.00
+                    }
+                ]
+            },
+            {
+                "OrderDate": "2023-01-01T00:00:00",
+                "Status": "Pending",
+                "TotalPrice": 80.00,
+                "Address": "123 Main St",
+                "Items": [
+                    {
+                        "ProductId": 2,
+                        "Price": 50.00
+                    },
+                    {
+                        "ProductId": 5,
+                        "Price": 30.00
+                    }
+                ]
+            }
+        ]
     },
     {
         "UserName": "Karen",
@@ -55,7 +89,25 @@
                     "ProductId": 2
                 } 
             ]
-        }
+        },
+        "Orders": [
+            {
+                "OrderDate": "2023-01-01T00:00:00",
+                "Status": "Pending",
+                "TotalPrice": 60.00,
+                "Address": "123 Main St",
+                "Items": [
+                    {
+                        "ProductId": 2,
+                        "Price": 50.00
+                    },
+                    {
+                        "ProductId": 2,
+                        "Price": 10.00
+                    }
+                ]
+            }
+        ]
     },
     {
         "UserName": "Margo",

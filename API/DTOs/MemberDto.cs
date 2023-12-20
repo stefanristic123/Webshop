@@ -24,5 +24,6 @@ namespace API.DTOs
         public string Country { get; set; }     
         public List<PhotoDto> Photos { get; set; }
         public CartDto Cart { get; set; }
+        public OrderDto Order { get; set; }
     }
 }

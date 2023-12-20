@@ -24,6 +24,7 @@ namespace API.Entities
         public string Country { get; set; }     
         public List<Photo> Photos { get; set; } = new();      
         public Cart Cart { get; set; }
+        public ICollection<Order> Orders { get; set; } = new List<Order>();
 
         // public int GetAge()
         // {
