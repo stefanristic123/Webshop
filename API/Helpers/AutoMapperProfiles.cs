@@ -32,7 +32,7 @@ namespace API.Helpers
                 .ForMember(dest => dest.ProductName, opt => opt.MapFrom(src => src.Product.Name))
                 .ForMember(dest => dest.ProductPrice, opt => opt.MapFrom(src => src.Product.Price))
                 .ForMember(dest => dest.ProductPhotoUrl, opt => opt.MapFrom(src => src.Product.ProductPhotos.FirstOrDefault(p => p.IsMain).Url));
-            
+            CreateMap<MemberUpdateDto, AppUser>();
         }
         
     }

@@ -19,6 +19,9 @@ import { ErrorInterceptor } from './_interceptors/error.interceptor';
 import { JwtInterceptor } from './_interceptors/jwt.interceptor';
 import { ProductListComponent } from './products/product-list/product-list.component';
 import { ProductDetailComponent } from './products/product-detail/product-detail.component';
+import { MemberEditComponent } from './members/member-edit/member-edit.component';
+import { NgxSpinnerModule } from 'ngx-spinner';
+import { LoadingInterceptor } from './_interceptors/loading.interceptor';
 
 @NgModule({
   declarations: [
@@ -31,7 +34,8 @@ import { ProductDetailComponent } from './products/product-detail/product-detail
     ProductListComponent,
     // ProductDetailComponent,
     ListsComponent,
-    TestErrorsComponent
+    TestErrorsComponent,
+    MemberEditComponent
   ],
   imports: [
     BrowserModule,
@@ -40,11 +44,13 @@ import { ProductDetailComponent } from './products/product-detail/product-detail
     BrowserAnimationsModule,
     FormsModule,
     BsDropdownModule.forRoot(),
-    SharedModule
+    SharedModule,
+    NgxSpinnerModule
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true},
     {provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true},
+    {provide: HTTP_INTERCEPTORS, useClass: LoadingInterceptor, multi: true},
   ],
   bootstrap: [AppComponent]
 })
