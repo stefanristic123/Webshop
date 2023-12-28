@@ -7,10 +7,8 @@ import { ProductsService } from 'src/app/_services/product.service';
 
 @Component({
   selector: 'app-product-detail',
-  standalone: true,
   templateUrl: './product-detail.component.html',
   styleUrls: ['./product-detail.component.css'],
-  imports: [CommonModule, TabsModule]
 })
 export class ProductDetailComponent {
   product: Product | undefined;

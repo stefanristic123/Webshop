@@ -1,9 +1,11 @@
 import { AccountService } from '../_services/account.service';
-import { Observable, of } from 'rxjs';
+import { Observable, of, take } from 'rxjs';
 import { User } from '../_models/user';
 import { Component, OnInit } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
+import { CartService } from '../_services/cart.service';
+import { Cart } from '../_models/cart';
 
 @Component({
   selector: 'app-nav',
@@ -12,18 +14,28 @@ import { Router } from '@angular/router';
 })
 export class NavComponent implements OnInit {
   model: any = {}
+  cart: Cart | undefined;
+  user!: User;
 
   constructor(
     public accountService: AccountService,
     private router: Router,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private cartService: CartService
   ) { }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.accountService.currentUser$.pipe(take(1)).subscribe({
+      next: user => {
+        if (user) this.user = user
+        this.getCart(this.user.id);
+      }
+    })
+  }
 
   login() {
     this.accountService.login(this.model).subscribe({
-      next: _ => this.router.navigateByUrl('/members'),
+      next: _ => this.router.navigateByUrl('/products'),
       error: error => this.toastr.error(error.error)
     })
   }
@@ -33,4 +45,12 @@ export class NavComponent implements OnInit {
     this.router.navigateByUrl('/');
   }
 
+  getCart(id: number) {
+    this.cartService.getCart(id).subscribe({
+      next: response => {
+        console.log(response)
+        this.cart = response;
+      }
+    })
+  } 
 }

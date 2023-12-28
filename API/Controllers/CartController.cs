@@ -26,7 +26,7 @@ namespace API.Controllers
             return _mapper.Map<CartDto>(cart);
         }
 
-        [HttpPost("add-item")]
+        [HttpPost("add-item/{userId}/{productId}")]
         public async Task<ActionResult> AddItemToCart(int userId, int productId){
             if (!await _cartRepository.AddItemToCart(userId, productId)){
                 return BadRequest("Failed to add item to cart");
@@ -35,7 +35,7 @@ namespace API.Controllers
             return Ok();
         }
 
-        [HttpDelete("remove-item/{cartItemId}")]
+        [HttpDelete("remove-item/{userId}/{cartItemId}")]
         public async Task<ActionResult> RemoveItemFromCart(int userId, int cartItemId){
             if (!await _cartRepository.RemoveItemFromCart(userId, cartItemId)){
                 return BadRequest("Failed to remove item from cart");

@@ -18,4 +18,12 @@ export class ProductsService {
   getProduct(name: string) {
     return this.http.get<Product>(this.baseUrl + 'products/' + name);
   }
+
+  setMainPhoto(photoId: number, id: number) {
+    return this.http.put(this.baseUrl + 'products/set-main-photo/' + photoId + '/' + id, {});
+  }
+
+  deletePhoto(photoId: number, id: number) {
+    return this.http.delete(this.baseUrl + 'products/delete-photo/' + photoId + '/' + id);
+  }
 }

@@ -21,6 +21,9 @@
       </ng-container>
     </ul>
 
+    <div  *ngIf="(accountService.currentUser$ | async) as user">
+      <button routerLink="/cart" class="btn btn-primary"><i class="fa fa-shopping-cart" style="font-size: 25px;"></i>{{cart?.items?.length }}</button>
+    </div>
     <div class="dropdown" *ngIf="(accountService.currentUser$ | async) as user" dropdown>
       <img src="{{user.photoUrl || './assets/user.png'}}" alt="user photo">
       <a class="dropdown-toggle text-light text-decoration-none ms-2" dropdownToggle>Welcome {{user.username | titlecase}}</a>

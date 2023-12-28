@@ -23,6 +23,8 @@ import { MemberEditComponent } from './members/member-edit/member-edit.component
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { LoadingInterceptor } from './_interceptors/loading.interceptor';
 import { PhotoEditorComponent } from './members/photo-editor/photo-editor.component';
+import { ProductPhotoEditorComponent } from './products/product-photo-editor/product-photo-editor.component';
+import { CartComponent } from './cart/cart/cart.component';
 
 @NgModule({
   declarations: [
@@ -33,11 +35,13 @@ import { PhotoEditorComponent } from './members/photo-editor/photo-editor.compon
     MemberListComponent,
     // MemberDetailComponent,
     ProductListComponent,
-    // ProductDetailComponent,
+    ProductDetailComponent,
     ListsComponent,
     TestErrorsComponent,
     MemberEditComponent,
-    PhotoEditorComponent
+    PhotoEditorComponent,
+    ProductPhotoEditorComponent,
+    CartComponent
   ],
   imports: [
     BrowserModule,
