@@ -65,7 +65,7 @@ export class ProductPhotoEditorComponent  implements OnInit{
 
   initializeUploader(id: number) {
     this.uploader = new FileUploader({
-      url: this.baseUrl + 'products/add-photo' + {id},
+      url: this.baseUrl + 'products/add-photo/' + id,
       isHTML5: true,
       allowedFileType: ['image'],
       removeAfterUpload: true,

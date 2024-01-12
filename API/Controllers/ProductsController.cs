@@ -4,6 +4,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using API.DTOs;
 using API.Entities;
+using API.Extensions;
+using API.Helpers;
 using API.Interfaces;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
@@ -23,10 +25,10 @@ namespace API.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<ProductDto>>> GetProducts(){
-            var products = await _productRepository.GetProductsAsync();
-            var productsToReturn = _mapper.Map<IEnumerable<ProductDto>>(products);
-            return Ok(productsToReturn);         
+        public async Task<ActionResult<IEnumerable<ProductDto>>> GetProducts([FromQuery]ProductParams productParams){
+            var products = await _productRepository.GetProductsAsync(productParams);
+            Response.AddPaginationHeader(new PaginationHeader(products.CurrentPage, products.PageSize, products.TotalCount, products.TotalPages));
+            return Ok(products);         
         }
 
         [HttpGet("{name}")]
@@ -43,7 +45,7 @@ namespace API.Controllers
         }
 
 
-        [HttpPost("add-photo")]
+        [HttpPost("add-photo/{id}")]
         public async Task<ActionResult<PhotoDto>> AddPhoto(IFormFile file, int id)
         {
             var product = await _productRepository.GetProductByIdAsync(id);
@@ -58,10 +60,8 @@ namespace API.Controllers
 
              var currentMainPhoto = product.ProductPhotos.FirstOrDefault(p => p.IsMain);
             if (currentMainPhoto != null){
-                // Unset the current main photo
                 currentMainPhoto.IsMain = false;
             } else {
-                // If there are no main photos, set the new one as main
                 photo.IsMain = true;
             }
 

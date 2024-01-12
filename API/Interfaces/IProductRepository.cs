@@ -1,8 +1,10 @@
-using System;
+ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using API.DTOs;
 using API.Entities;
+using API.Helpers;
 
 namespace API.Interfaces
 {
@@ -11,7 +13,7 @@ namespace API.Interfaces
         void Update(Product product);
         Task<bool> SaveAllAsync();
 
-        Task<IEnumerable<Product>> GetProductsAsync();
+        Task<PagedList<ProductDto>> GetProductsAsync(ProductParams productParams);
 
         Task<Product> GetProductByIdAsync(int id);
 

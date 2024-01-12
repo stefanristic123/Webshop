@@ -6,6 +6,9 @@ using API.Entities;
 using API.Interfaces;
 using AutoMapper;
 using Microsoft.EntityFrameworkCore;
+using API.Helpers;
+using AutoMapper.QueryableExtensions;
+using API.DTOs;
 
 namespace API.Data
 {
@@ -19,11 +22,20 @@ namespace API.Data
             _mapper = mapper;
         }
 
-        public async Task<IEnumerable<Product>> GetProductsAsync()
-        {
-            return await _context.Products
-                .Include(p => p.ProductPhotos) 
-                .ToListAsync(); 
+        public async Task<PagedList<ProductDto>> GetProductsAsync(ProductParams productParams){
+            var query = _context.Products.AsQueryable();
+
+            var minDob = productParams.MinPrice;
+            var maxDob = productParams.MaxPrice;
+
+            query = query.Where(u => u.Price >= minDob && u.Price <= maxDob);
+
+            if (!string.IsNullOrEmpty(productParams.SearchTerm)){
+                query = query.Where(p => p.Name.Contains(productParams.SearchTerm));
+            }
+
+            return await PagedList<ProductDto>.CreateAsync(query.ProjectTo<ProductDto>(_mapper.ConfigurationProvider).AsTracking(), 
+                productParams.PageNumber, productParams.PageSize);
         }
 
         public async Task<Product> GetProductByNameAsync(string name)

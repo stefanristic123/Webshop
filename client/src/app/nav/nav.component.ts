@@ -48,7 +48,6 @@ export class NavComponent implements OnInit {
   getCart(id: number) {
     this.cartService.getCart(id).subscribe({
       next: response => {
-        console.log(response)
         this.cart = response;
       }
     })
