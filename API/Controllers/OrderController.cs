@@ -58,5 +58,13 @@ namespace API.Controllers
             return Ok();
         }
 
+        [HttpDelete("{userId:int}/{orderId:int}")]
+        public async Task<IActionResult> DeleteOrder(int userId, int orderId)
+        {
+            var success = await _orderRepository.DeleteOrder(userId, orderId);
+            if (!success) return NotFound("Order not found or does not belong to the user.");
+            return Ok();
+        }
+
     }
 }

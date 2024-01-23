@@ -11,6 +11,7 @@ import { ProductDetailComponent } from './products/product-detail/product-detail
 import { MemberEditComponent } from './members/member-edit/member-edit.component';
 import { preventUnsavedChangesGuard } from './_guards/prevent-unsaved-changes.guard';
 import { CartComponent } from './cart/cart/cart.component';
+import { CheckoutComponent } from './cart/cart/checkout/checkout.component';
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
@@ -26,6 +27,7 @@ const routes: Routes = [
       {path: 'member/edit', component: MemberEditComponent, canDeactivate: [preventUnsavedChangesGuard]},
       {path: 'lists', component: ListsComponent},
       {path: 'cart', component: CartComponent},
+      {path: 'checkout', component: CheckoutComponent},
     ]
   },
   {path: 'errors', component: TestErrorsComponent},

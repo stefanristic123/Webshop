@@ -33,7 +33,13 @@ export class ProductListComponent  implements OnInit {
     private cartService: CartService,
     public accountService: AccountService,
     private toastr: ToastrService,
-    ) { }
+    ) {
+      this.accountService.currentUser$.pipe(take(1)).subscribe({
+        next: user => {
+          if (user) this.user = user
+        }
+      })
+     }
 
   ngOnInit() {
     this.loadProducts();
@@ -61,7 +67,7 @@ export class ProductListComponent  implements OnInit {
     // }
   }
 
-  addItemToCart(productId: number) {
+  addItemToCart(productId: any) {
     this.cartService.addItemToCart(productId, this.user.id).subscribe({
       next: response => this.toastr.success("Added to a cart"),
       error: error => this.toastr.error(error.error)

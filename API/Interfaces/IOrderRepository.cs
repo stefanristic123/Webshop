@@ -13,5 +13,6 @@ namespace API.Interfaces
         Task<IEnumerable<Order>> GetOrdersByUserAndStatusAsync(int userId, string status);
         Task<bool> RemoveOrderItem(int userId, int orderId, int itemId);
         Task<bool> AddItemToOrder(int userId, int orderId, int productId);
+        Task<bool> DeleteOrder(int userId, int orderId);
     }
 }

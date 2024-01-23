@@ -20,7 +20,7 @@ export class CartService {
   }
 
   addItemToCart(userId: number, productId: number) {
-    return this.http.post(this.baseUrl + 'cart/add-item/' + userId + '/' + productId, {});
+    return this.http.post(this.baseUrl + 'cart/add-item/' +  productId + '/' + userId, {});
   }
 
   removeItemFromCart(userId: number, cartItemId: number) {

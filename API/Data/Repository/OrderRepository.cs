@@ -12,44 +12,64 @@ namespace API.Data.Repository
     {
         private readonly DataContext _context;
 
-        public OrderRepository(DataContext context)
+        public OrderRepository(DataContext context) 
         {
             _context = context;
         }
 
         public async Task<Order> CreateOrder(int userId){
+            // Fetch the cart
             var cart = await _context.Carts
                 .Include(c => c.Items)
                     .ThenInclude(ci => ci.Product)
                 .FirstOrDefaultAsync(c => c.AppUserId == userId);
 
-            if (cart == null || !cart.Items.Any())
-            {
+            if (cart == null || !cart.Items.Any()){
                 return null; 
             }
 
-            var order = new Order
-            {
-                AppUserId = userId,
-                OrderDate = DateTime.UtcNow,
-                Status = "Pending",
-                Items = cart.Items.Select(ci => new OrderItem
+            // Check for an existing 'Pending' order
+            var existingOrder = await _context.Orders
+                .Where(o => o.AppUserId == userId && o.Status == "Pending")
+                .Include(o => o.Items)
+                .FirstOrDefaultAsync();
+
+            if (existingOrder != null){
+                // Add items to the existing 'Pending' order
+                foreach (var cartItem in cart.Items)
                 {
-                    ProductId = ci.ProductId,
-                    Price = ci.Product.Price,
-                }).ToList()
-            };
+                    var orderItem = new OrderItem
+                    {
+                        ProductId = cartItem.ProductId,
+                        Price = cartItem.Product.Price,
+                    };
+                    existingOrder.Items.Add(orderItem);
+                }
+            } else {
+                // Create a new order if no 'Pending' order exists
+                existingOrder = new Order
+                {
+                    AppUserId = userId,
+                    OrderDate = DateTime.UtcNow,
+                    Status = "Pending",
+                    Items = cart.Items.Select(ci => new OrderItem
+                    {
+                        ProductId = ci.ProductId,
+                        Price = ci.Product.Price,
+                    }).ToList()
+                };
 
-            UpdateOrderTotalPrice(order);
+                _context.Orders.Add(existingOrder);
+            }
 
-            _context.Orders.Add(order);
+            UpdateOrderTotalPrice(existingOrder);
             await _context.SaveChangesAsync();
 
-            // Optionally clear the cart after creating the order
+            // Optionally clear the cart after creating/updating the order
             cart.Items.Clear();
             await _context.SaveChangesAsync();
 
-            return order;
+            return existingOrder;
         }
 
         public async Task<IEnumerable<Order>> GetOrdersByUserAsync(int userId){
@@ -57,6 +77,7 @@ namespace API.Data.Repository
                 .Where(o => o.AppUserId == userId)
                 .Include(o => o.Items)
                 .ThenInclude(oi => oi.Product)
+                .ThenInclude(p => p.ProductPhotos)
                 .ToListAsync();
         }
 
@@ -65,6 +86,7 @@ namespace API.Data.Repository
                 .Where(o => o.AppUserId == userId && o.Status == status)
                 .Include(o => o.Items)
                     .ThenInclude(oi => oi.Product)
+                    .ThenInclude(p => p.ProductPhotos)
                 .ToListAsync();
         }
 
@@ -102,6 +124,17 @@ namespace API.Data.Repository
 
             order.Items.Add(orderItem);
             UpdateOrderTotalPrice(order);
+            return await _context.SaveChangesAsync() > 0;
+        }
+
+        public async Task<bool> DeleteOrder(int userId, int orderId){
+            var order = await _context.Orders.Where(o => o.Id == orderId && o.AppUserId == userId).SingleOrDefaultAsync();
+
+            if (order == null){
+                return false; 
+            }
+
+            _context.Orders.Remove(order);
             return await _context.SaveChangesAsync() > 0;
         }
 

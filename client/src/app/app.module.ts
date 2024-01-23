@@ -27,6 +27,7 @@ import { ProductPhotoEditorComponent } from './products/product-photo-editor/pro
 import { CartComponent } from './cart/cart/cart.component';
 import { TextInputComponent } from './_forms/text-input/text-input.component';
 import { DatePickerComponent } from './_forms/date-picker/date-picker.component';
+import { CheckoutComponent } from './cart/cart/checkout/checkout.component';
 
 @NgModule({
   declarations: [
@@ -45,7 +46,8 @@ import { DatePickerComponent } from './_forms/date-picker/date-picker.component'
     ProductPhotoEditorComponent,
     CartComponent,
     TextInputComponent,
-    DatePickerComponent
+    DatePickerComponent,
+    CheckoutComponent
   ],
   imports: [
     BrowserModule,
