@@ -73,4 +73,11 @@ export class ProductListComponent  implements OnInit {
       error: error => this.toastr.error(error.error)
     })
   }
+
+  addProductLike(product: Product) {
+    this.productService.addLike(product.id).subscribe({
+      next: () => this.toastr.success('You have liked ' + product)
+    })
+  }
+
 }

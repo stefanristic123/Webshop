@@ -3,6 +3,7 @@ using System;
 using API.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace API.Data.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20240123143947_LikeEntityAdded")]
+    partial class LikeEntityAdded
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "7.0.0");
@@ -209,21 +212,6 @@ namespace API.Data.Migrations
                     b.ToTable("Products");
                 });
 
-            modelBuilder.Entity("API.Entities.ProductLike", b =>
-                {
-                    b.Property<int>("SourceUserId")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int>("LikedProductId")
-                        .HasColumnType("INTEGER");
-
-                    b.HasKey("SourceUserId", "LikedProductId");
-
-                    b.HasIndex("LikedProductId");
-
-                    b.ToTable("ProductLikes");
-                });
-
             modelBuilder.Entity("API.Entities.ProductPhoto", b =>
                 {
                     b.Property<int>("Id")
@@ -335,25 +323,6 @@ namespace API.Data.Migrations
                     b.Navigation("AppUser");
                 });
 
-            modelBuilder.Entity("API.Entities.ProductLike", b =>
-                {
-                    b.HasOne("API.Entities.Product", "LikedProduct")
-                        .WithMany("ProductLikes")
-                        .HasForeignKey("LikedProductId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("API.Entities.AppUser", "SourceUser")
-                        .WithMany("LikedProducts")
-                        .HasForeignKey("SourceUserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("LikedProduct");
-
-                    b.Navigation("SourceUser");
-                });
-
             modelBuilder.Entity("API.Entities.ProductPhoto", b =>
                 {
                     b.HasOne("API.Entities.Product", "Product")
@@ -390,8 +359,6 @@ namespace API.Data.Migrations
 
                     b.Navigation("LikedByUsers");
 
-                    b.Navigation("LikedProducts");
-
                     b.Navigation("LikedUsers");
 
                     b.Navigation("Orders");
@@ -411,8 +378,6 @@ namespace API.Data.Migrations
 
             modelBuilder.Entity("API.Entities.Product", b =>
                 {
-                    b.Navigation("ProductLikes");
-
                     b.Navigation("ProductPhotos");
                 });
 #pragma warning restore 612, 618

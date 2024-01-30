@@ -25,10 +25,8 @@ namespace API.Entities
         public List<Photo>? Photos { get; set; } = new();      
         public Cart? Cart { get; set; }
         public ICollection<Order>? Orders { get; set; } = new List<Order>();
-
-        // public int GetAge()
-        // {
-        //     return DateOfBirth.CalculateAge();
-        // } 
+        public ICollection<UserLike> LikedByUsers { get; set; }
+        public ICollection<UserLike> LikedUsers  { get; set; }  
+        public ICollection<ProductLike>? LikedProducts { get; set; }
     }
 }

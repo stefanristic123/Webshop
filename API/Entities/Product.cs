@@ -12,5 +12,6 @@ namespace API.Entities
         public string Description { get; set; }
         public decimal Price { get; set; }
         public List<ProductPhoto> ProductPhotos { get; set; } = new();      
+        public ICollection<ProductLike> ProductLikes { get; set; }
     }
 }

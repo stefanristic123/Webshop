@@ -18,6 +18,8 @@ public static class ApplicationServiceExtensions
         services.AddScoped<IProductRepository, ProductRepository>();
         services.AddScoped<ICartRepository, CartRepository>();
         services.AddScoped<IOrderRepository, OrderRepository>();
+        services.AddScoped<ILikesRepository, LikesRepository>();
+        services.AddScoped<ILikesProductsRepository, LikesProductRepository>();
         services.AddScoped<LogUserActivity>();
         services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
         services.AddDbContext<DataContext>(opt =>

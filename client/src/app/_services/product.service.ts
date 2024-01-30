@@ -76,4 +76,16 @@ export class ProductsService {
   deletePhoto(photoId: number, id: number) {
     return this.http.delete(this.baseUrl + 'products/delete-photo/' + photoId + '/' + id);
   }
+
+  addLike(productId: any) {
+    return this.http.post(this.baseUrl + 'likesProduct/' + productId, {})
+  }
+
+  getLikes(predicate: string, pageNumber: number, pageSize: number) {
+    let params = this.getPaginationHeaders(pageNumber, pageSize);
+
+    params = params.append('predicate', predicate);
+
+    return this.getPaginatedResult<Product[]>(this.baseUrl + 'likesProduct', params);
+  }
 }

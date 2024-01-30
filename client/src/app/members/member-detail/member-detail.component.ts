@@ -1,8 +1,9 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { TabsModule } from 'ngx-bootstrap/tabs';
 import { TimeagoModule } from 'ngx-timeago';
+import { ToastrService } from 'ngx-toastr';
 import { Member } from 'src/app/_models/member';
 import { MembersService } from 'src/app/_services/member.service';
 
@@ -17,7 +18,7 @@ export class MemberDetailComponent {
   member: Member | undefined;
   images: any[] = [];
 
-  constructor(private memberService: MembersService, private route: ActivatedRoute) { }
+  constructor(private memberService: MembersService, private route: ActivatedRoute, private toastr: ToastrService) { }
 
   ngOnInit(): void {
     this.loadMember();
@@ -34,6 +35,12 @@ export class MemberDetailComponent {
     })
   }
 
+  addLike(member: Member) {
+    this.memberService.addLike(member.username).subscribe({
+      next: () => this.toastr.success('You have liked ' + member.knownAs)
+    })
+  }
+  
   getImages() {
     if (!this.member) return;
     for (const photo of this.member?.photos) {
