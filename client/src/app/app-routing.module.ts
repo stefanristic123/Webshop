@@ -12,6 +12,8 @@ import { MemberEditComponent } from './members/member-edit/member-edit.component
 import { preventUnsavedChangesGuard } from './_guards/prevent-unsaved-changes.guard';
 import { CartComponent } from './cart/cart/cart.component';
 import { CheckoutComponent } from './cart/cart/checkout/checkout.component';
+import { AdminPanelComponent } from './admin/admin-panel/admin-panel.component';
+import { adminGuard } from './_guards/admin.guard';
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
@@ -28,6 +30,7 @@ const routes: Routes = [
       {path: 'lists', component: ListsComponent},
       {path: 'cart', component: CartComponent},
       {path: 'checkout', component: CheckoutComponent},
+      {path: 'admin', component: AdminPanelComponent, canActivate: [adminGuard]},
     ]
   },
   {path: 'errors', component: TestErrorsComponent},

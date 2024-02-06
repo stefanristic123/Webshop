@@ -28,6 +28,12 @@ import { CartComponent } from './cart/cart/cart.component';
 import { TextInputComponent } from './_forms/text-input/text-input.component';
 import { DatePickerComponent } from './_forms/date-picker/date-picker.component';
 import { CheckoutComponent } from './cart/cart/checkout/checkout.component';
+import { AdminPanelComponent } from './admin/admin-panel/admin-panel.component';
+import { HasRoleDirective } from './_directives/has-role.directive';
+import { PhotoManagementComponent } from './admin/photo-management/photo-management.component';
+import { UserManagementComponent } from './admin/user-management/user-management.component';
+import { RolesModalComponent } from './modals/roles-modal/roles-modal.component';
+
 
 @NgModule({
   declarations: [
@@ -47,7 +53,12 @@ import { CheckoutComponent } from './cart/cart/checkout/checkout.component';
     CartComponent,
     TextInputComponent,
     DatePickerComponent,
-    CheckoutComponent
+    CheckoutComponent,
+    AdminPanelComponent,
+    HasRoleDirective,
+    PhotoManagementComponent,
+    UserManagementComponent,
+    RolesModalComponent,
   ],
   imports: [
     BrowserModule,

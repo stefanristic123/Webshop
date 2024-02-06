@@ -16,53 +16,6 @@
                 "Url": "https://randomuser.me/api/portraits/women/54.jpg",
                 "IsMain": true
             }
-        ],
-        "Cart": {
-            "Items": [
-                {
-                    "ProductId": 1 
-                } ,
-                {
-                    "ProductId": 2
-                } ,
-                {
-                    "ProductId": 3
-                } 
-            ]
-        },
-        "Orders": [
-            {
-                "OrderDate": "2023-01-01T00:00:00",
-                "Status": "Finished",
-                "TotalPrice": 100.00,
-                "Address": "123 Main St",
-                "Items": [
-                    {
-                        "ProductId": 1,
-                        "Price": 50.00
-                    },
-                    {
-                        "ProductId": 2,
-                        "Price": 50.00
-                    }
-                ]
-            },
-            {
-                "OrderDate": "2023-01-01T00:00:00",
-                "Status": "Pending",
-                "TotalPrice": 80.00,
-                "Address": "123 Main St",
-                "Items": [
-                    {
-                        "ProductId": 2,
-                        "Price": 50.00
-                    },
-                    {
-                        "ProductId": 5,
-                        "Price": 30.00
-                    }
-                ]
-            }
         ]
     },
     {
@@ -81,31 +34,6 @@
             {
                 "Url": "https://randomuser.me/api/portraits/women/50.jpg",
                 "IsMain": true
-            }
-        ],
-        "Cart": {
-            "Items": [
-                {
-                    "ProductId": 2
-                } 
-            ]
-        },
-        "Orders": [
-            {
-                "OrderDate": "2023-01-01T00:00:00",
-                "Status": "Pending",
-                "TotalPrice": 60.00,
-                "Address": "123 Main St",
-                "Items": [
-                    {
-                        "ProductId": 2,
-                        "Price": 50.00
-                    },
-                    {
-                        "ProductId": 2,
-                        "Price": 10.00
-                    }
-                ]
             }
         ]
     },
@@ -126,14 +54,7 @@
                 "Url": "https://randomuser.me/api/portraits/women/14.jpg",
                 "IsMain": true
             }
-        ],
-        "Cart": {
-            "Items": [
-                {
-                    "ProductId": 3
-                } 
-            ]
-        }
+        ]
     },
     {
         "UserName": "Lois",
@@ -152,14 +73,7 @@
                 "Url": "https://randomuser.me/api/portraits/women/11.jpg",
                 "IsMain": true
             }
-        ],
-        "Cart": {
-            "Items": [
-                {
-                    "ProductId": 4
-                } 
-            ]
-        }
+        ]
     },
     {
         "UserName": "Ruthie",
@@ -178,14 +92,7 @@
                 "Url": "https://randomuser.me/api/portraits/women/84.jpg",
                 "IsMain": true
             }
-        ],
-        "Cart": {
-            "Items": [
-                {
-                    "ProductId": 5
-                } 
-            ]
-        }
+        ]
     },
     {
         "UserName": "Todd",
@@ -204,14 +111,7 @@
                 "Url": "https://randomuser.me/api/portraits/men/90.jpg",
                 "IsMain": true
             }
-        ],
-        "Cart": {
-            "Items": [
-                {
-                    "ProductId": 2
-                } 
-            ]
-        }
+        ]
     },
     {
         "UserName": "Porter",
@@ -230,14 +130,7 @@
                 "Url": "https://randomuser.me/api/portraits/men/87.jpg",
                 "IsMain": true
             }
-        ],
-        "Cart": {
-            "Items": [
-                {
-                    "ProductId": 3
-                } 
-            ]
-        }
+        ]
     },
     {
         "UserName": "Mayo",
@@ -256,14 +149,7 @@
                 "Url": "https://randomuser.me/api/portraits/men/57.jpg",
                 "IsMain": true
             }
-        ],
-        "Cart": {
-            "Items": [
-                {
-                    "ProductId": 4
-                } 
-            ]
-        }
+        ]
     },
     {
         "UserName": "Skinner",
@@ -282,14 +168,7 @@
                 "Url": "https://randomuser.me/api/portraits/men/11.jpg",
                 "IsMain": true
             }
-        ],
-        "Cart": {
-            "Items": [
-                {
-                    "ProductId": 5
-                } 
-            ]
-        }
+        ]
     },
     {
         "UserName": "Davis",
@@ -308,13 +187,6 @@
                 "Url": "https://randomuser.me/api/portraits/men/93.jpg",
                 "IsMain": true
             }
-        ],
-        "Cart": {
-            "Items": [
-                {
-                    "ProductId": 5
-                } 
-            ]
-        }
+        ]
     }
 ]

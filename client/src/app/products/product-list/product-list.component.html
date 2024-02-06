@@ -64,8 +64,7 @@
                 <img src="{{product.productPhotoUrl || './assets/user.png'}}" class="card-img-top">
                 <ul class="list-inline member-icons animate text-center">
                     <li class="list-inline-item">
-                        {{product.id }}
-                        <button  class="btn btn-primary" (click)="addItemToCart(product.id)"><i class="fa fa-shopping-cart"></i></button>
+                        <button class="btn btn-primary" (click)="addItemToCart(product.id)"><i class="fa fa-shopping-cart"></i></button>
                     </li>
                     <li class="list-inline-item">
                         <button class="btn btn-primary" (click)="addProductLike(product)"><i class="fa fa-heart"></i></button>

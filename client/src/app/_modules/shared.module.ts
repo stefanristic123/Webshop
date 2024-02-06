@@ -9,6 +9,7 @@ import { PaginationModule } from 'ngx-bootstrap/pagination';
 import { ButtonsModule } from 'ngx-bootstrap/buttons';
 import { TimeagoModule } from "ngx-timeago";
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
+import { ModalModule } from 'ngx-bootstrap/modal';
 @NgModule({
   declarations: [],
   imports: [
@@ -22,7 +23,8 @@ import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
     ButtonsModule.forRoot(),
     TimeagoModule.forRoot(),
     FileUploadModule,
-    BsDatepickerModule.forRoot()
+    BsDatepickerModule.forRoot(),
+    ModalModule.forRoot(),
   ],
   exports: [
     BsDropdownModule,
